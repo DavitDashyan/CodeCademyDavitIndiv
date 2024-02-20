@@ -156,7 +156,7 @@
       </padding>
    </VBox>
 
-                <TableView fx:id="tvModules" layoutX="316.0" layoutY="190.0" prefHeight="551.0" prefWidth="500.0">
+                <TableView fx:id="tvModules" layoutX="316.0" layoutY="190.0" prefHeight="551.0" prefWidth="501.0">
         <columns>
             <TableColumn fx:id="colModuleName" prefWidth="200.0" text="Module Name" />
             <TableColumn fx:id="colModuleDescription" prefWidth="300.0" text="Description" />

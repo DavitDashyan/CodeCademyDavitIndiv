@@ -78,15 +78,15 @@ public class CourseController implements Initializable {
     void handleButtonAction(ActionEvent event) throws IOException {
         if (event.getSource() == btnInsert) {
             insertCourse();
-        } 
+        }
         if (event.getSource() == btnDelete) {
             deleteCourse();
-        } 
+        }
         if (event.getSource() == btnClear) {
             isClicked = true;
-            clear();    
-        } 
-        if(event.getSource() == btnBack) {
+            clear();
+        }
+        if (event.getSource() == btnBack) {
             backToHome();
         }
         if (event.getSource() == btnUpdate && !isClicked) {
@@ -102,17 +102,36 @@ public class CourseController implements Initializable {
         }
         if (event.getSource() == btnViewCourse) {
             toCourseDetails();
+            // handleViewCourseButtonAction();
         }
+
+        // if (event.getSource() == btnViewCourse) {
+        //     Course selectedCourse = tvCourses.getSelectionModel().getSelectedItem();
+        //     if (selectedCourse != null) {
+        //         btnViewCourse.setStyle("-fx-background-color: lightblue;");
+        //     } else {
+        //         btnViewCourse.setStyle(null);
+        //     }
+        // }
+
     }
+
+    // private void handleViewCourseButtonAction() {
+    // Course selectedCourse = tvCourses.getSelectionModel().getSelectedItem();
+    // if (selectedCourse != null) {
+    // btnViewCourse.setStyle("-fx-background-color: lightgreen;");
+    // } else {
+    // btnViewCourse.setStyle(null);
+    // }
+    // }
 
     public void initialize(URL url, ResourceBundle rb) {
         showCourse();
         cbModuleNames.setItems(FXCollections.observableArrayList(CourseDAO.getModuleNames()));
-            cbDifficulty.setItems(FXCollections.observableArrayList(
-            Difficulty.Beginner.name(),
-            Difficulty.Intermediate.name(),
-            Difficulty.Expert.name()
-    ));
+        cbDifficulty.setItems(FXCollections.observableArrayList(
+                Difficulty.Beginner.name(),
+                Difficulty.Intermediate.name(),
+                Difficulty.Expert.name()));
     }
 
     public void showCourse() {
@@ -125,31 +144,30 @@ public class CourseController implements Initializable {
 
         tvCourses.setItems(courseList);
     }
-    
+
     private void insertCourse() {
         System.out.println("Insert Course method called");
-    
+
         Difficulty difficulty = Difficulty.valueOf(cbDifficulty.getSelectionModel().getSelectedItem());
         String selectedModule = cbModuleNames.getSelectionModel().getSelectedItem();
-    
+
         CourseDAO.insertCourse(
-            tfCoursename.getText(),
-            Integer.parseInt(tfCoursenumber.getText()),
-            tfSubject.getText(),
-            tfIntroductiontext.getText(),
-            difficulty,
-            selectedModule
-        );
-    
+                tfCoursename.getText(),
+                Integer.parseInt(tfCoursenumber.getText()),
+                tfSubject.getText(),
+                tfIntroductiontext.getText(),
+                difficulty,
+                selectedModule);
+
         clear();
         showCourse();
     }
-    
+
     public void deleteCourse() {
         System.out.println("Delete Course method called");
 
-        String selectedCourseName = tvCourses.getSelectionModel().getSelectedItem().getCourseName();            
-            
+        String selectedCourseName = tvCourses.getSelectionModel().getSelectedItem().getCourseName();
+
         CourseDAO.deleteCourse(selectedCourseName);
 
         showCourse();
@@ -157,20 +175,20 @@ public class CourseController implements Initializable {
 
     public void updateCourse() {
         System.out.println("Update Course method called");
-    
+
         String courseName = tfCoursename.getText();
         int courseNumber = Integer.parseInt(tfCoursenumber.getText());
         String subject = tfSubject.getText();
         String introductionText = tfIntroductiontext.getText();
         Difficulty difficulty = Difficulty.valueOf(cbDifficulty.getSelectionModel().getSelectedItem());
         String selectedModule = cbModuleNames.getSelectionModel().getSelectedItem();
-    
+
         CourseDAO.updateCourse(courseName, courseNumber, subject, introductionText, difficulty, selectedModule);
-    
+
         clear();
         showCourse();
     }
-    
+
     public void setText() {
         System.out.println("Set Text Course");
 
@@ -194,7 +212,7 @@ public class CourseController implements Initializable {
         cbModuleNames.setValue(null);
     }
 
-    public void backToHome() throws IOException{
+    public void backToHome() throws IOException {
         System.out.println("Back To Home");
 
         Stage stage = null;
@@ -208,7 +226,6 @@ public class CourseController implements Initializable {
         stage.show();
     }
 
-
     private void toCourseDetails() throws IOException {
         System.out.println("To Course Details");
 
@@ -218,7 +235,8 @@ public class CourseController implements Initializable {
             return;
         }
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../presentation/CourseDetail/layoutCourseDetail.fxml"));
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("../presentation/CourseDetail/layoutCourseDetail.fxml"));
         Parent courseDetailsRoot = loader.load();
 
         CourseDetailController courseDetailController = loader.getController();
@@ -231,4 +249,3 @@ public class CourseController implements Initializable {
         stage.show();
     }
 }
-
