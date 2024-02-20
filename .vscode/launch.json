@@ -1,0 +1,125 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "StatisticsUI",
+            "request": "launch",
+            "mainClass": "com.presentation.Statistics.StatisticsUI",
+            "projectName": "program"
+        },
+        {
+            "type": "java",
+            "name": "ParticipantDetailsDAO",
+            "request": "launch",
+            "mainClass": "com.datastorage.ParticipantProgressDAO",
+            "projectName": "program"
+        },
+        {
+            "name": "Java",
+            "type": "java",
+            "request": "launch",
+            "stopOnEntry": true,
+            "jdkPath": "${env:JAVA_HOME}/bin",
+            "cwd": "${fileDirname}",
+            "startupClass": "${fileBasenameNoExtension}",
+            "classpath": [
+                ".",
+                "${fileDirname}"
+            ]
+        },
+        {
+            "name": "Java Console App",
+            "type": "java",
+            "request": "launch",
+            "stopOnEntry": true,
+            "jdkPath": "${env:JAVA_HOME}/bin",
+            "cwd": "${fileDirname}",
+            "startupClass": "${fileBasenameNoExtension}",
+            "classpath": [
+                ".",
+                "${fileDirname}"
+            ],
+            "externalConsole": true
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "CertificateDAO",
+            "request": "launch",
+            "mainClass": "com.datastorage.CertificateDAO",
+            "projectName": "program"
+        },
+        {
+            "type": "java",
+            "name": "CourseDAO",
+            "request": "launch",
+            "mainClass": "com.datastorage.CourseDAO",
+            "projectName": "program"
+        },
+        {
+            "type": "java",
+            "name": "ParticipantDAO",
+            "request": "launch",
+            "mainClass": "com.datastorage.ParticipantDAO",
+            "projectName": "program"
+        },
+        {
+            "type": "java",
+            "name": "RegistrationDAO",
+            "request": "launch",
+            "mainClass": "com.datastorage.RegistrationDAO",
+            "projectName": "program"
+        },
+        {
+            "type": "java",
+            "name": "Certificate",
+            "request": "launch",
+            "mainClass": "com.domain.Certificate",
+            "projectName": "program"
+        },
+        {
+            "type": "java",
+            "name": "Course",
+            "request": "launch",
+            "mainClass": "com.domain.Course",
+            "projectName": "program"
+        },
+        {
+            "type": "java",
+            "name": "Registration",
+            "request": "launch",
+            "mainClass": "com.domain.Registration",
+            "projectName": "program"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "com.main.Main",
+            "projectName": "program"
+        },
+        {
+            "type": "java",
+            "name": "ParticipantUI",
+            "request": "launch",
+            "mainClass": "com.presentation.ParticipantUI",
+            "projectName": "program"
+        },
+        {
+            "type": "java",
+            "name": "RegistrationUI",
+            "request": "launch",
+            "mainClass": "com.presentation.RegistrationUI",
+            "projectName": "program"
+        }
+    ]
+}
