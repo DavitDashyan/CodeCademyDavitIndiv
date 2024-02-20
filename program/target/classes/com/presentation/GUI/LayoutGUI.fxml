@@ -1,25 +1,58 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="921.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.logic.GUIController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+   prefHeight="601.0" prefWidth="921.0" xmlns="http://javafx.com/javafx/19"
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.logic.GUIController">
    <children>
-      <Button fx:id="btnParticipants" layoutX="417.0" layoutY="157.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="26.0" prefWidth="87.0" text="Participants" />
-      <Button fx:id="btnCourses" layoutX="417.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="26.0" prefWidth="87.0" text="Courses" />
-      <Button fx:id="btnRegistrations" layoutX="417.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="26.0" prefWidth="87.0" text="Registrations" />
-      <Text layoutX="323.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codecademy Administration" wrappingWidth="275.73675537109375">
+      <Text layoutX="323.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0"
+         text="Codecademy Administration"
+         wrappingWidth="275.73675537109375">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
 
-      <!-- <Button fx:id="btnStatistics" layoutX="399.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="26.0" prefWidth="123.0" text="General Statistics" /> -->
-      <!-- <Button fx:id="btnCertificate" layoutX="417.0" layoutY="301.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="26.0" prefWidth="87.0" text="Certificate" /> -->
+      <Button fx:id="btnParticipants" layoutX="225.0" layoutY="210.5" mnemonicParsing="false"
+         onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" text="Participants">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0">
+               <Image
+                  url="https://cdn3.iconfinder.com/data/icons/ecommerce-329/48/groupsport_teampeopleparticipantusersteammen-512.png" />
+            </ImageView>
+         </graphic>
+      </Button>
 
-      <Button fx:id="btnStatistics" layoutX="399.0" layoutY="370.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="26.0" prefWidth="123.0" text="General Statistics" /> 
+      <Button fx:id="btnCourses" layoutX="475.0" layoutY="210.5" mnemonicParsing="false"
+         onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" text="Courses">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0">
+               <Image url="https://cdn-icons-png.flaticon.com/512/4762/4762232.png" />
+            </ImageView>
+         </graphic>
+      </Button>
 
+      <Button fx:id="btnRegistrations" layoutX="225.0" layoutY="354.5" mnemonicParsing="false"
+         onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" text="Registrations">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0">
+               <Image url="https://cdn-icons-png.flaticon.com/512/3534/3534124.png" />
+            </ImageView>
+         </graphic>
+      </Button>
+
+      <Button fx:id="btnStatistics" layoutX="475.0" layoutY="354.5" mnemonicParsing="false"
+         onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0"
+         text="General Statistics">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0">
+               <Image url="https://cdn-icons-png.freepik.com/512/4252/4252963.png" />
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

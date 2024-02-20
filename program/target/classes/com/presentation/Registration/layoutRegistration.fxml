@@ -22,11 +22,11 @@
             <Label text="Date:" />
          </children>
       </VBox>
-      <TableView fx:id="tvRegistrations" layoutX="348.0" layoutY="8.0" prefHeight="586.0" prefWidth="598.0">
+      <TableView fx:id="tvRegistrations" layoutX="348.0" layoutY="8.0" prefHeight="586.0" prefWidth="602.0">
         <columns>
             <TableColumn fx:id="colEmail" prefWidth="250.0" text="Email" />
             <TableColumn fx:id="colCourseName" prefWidth="170.0" text="Course" />
-            <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="188.0" text="Registration Date" />
+            <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="180.0" text="Registration Date" />
         </columns>
       </TableView>
       <VBox layoutX="64.0" layoutY="143.0" prefHeight="148.0" prefWidth="281.0" spacing="16.0">
