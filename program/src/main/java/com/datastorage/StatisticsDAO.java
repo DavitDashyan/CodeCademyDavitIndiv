@@ -127,4 +127,39 @@ public class StatisticsDAO {
 
         return ageStatistics;
     }
+
+    public static ObservableList<String> getGenderStatisticsForCourse(String courseName) {
+        ObservableList<String> genderStatistics = FXCollections.observableArrayList();
+        Connection conn = SQLServerDatabase.getDatabase().getConnection();
+
+        try {
+            String query = "SELECT " +
+                    "    Gender, " +
+                    "    COUNT(DISTINCT p.EmailAddress) AS TotalStudents " +
+                    "FROM " +
+                    "    Participant p " +
+                    "JOIN " +
+                    "    Registration r ON p.EmailAddress = r.EmailAddress " +
+                    "WHERE " +
+                    "    r.CourseName = ? " +
+                    "GROUP BY " +
+                    "    Gender";
+
+            PreparedStatement stm = conn.prepareStatement(query);
+            stm.setString(1, courseName);
+            ResultSet rs = stm.executeQuery();
+
+            while (rs.next()) {
+                String genderStatisticsEntry = "Gender: " + rs.getString("Gender") +
+                        ", Total Students: " + rs.getInt("TotalStudents");
+                genderStatistics.add(genderStatisticsEntry);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return genderStatistics;
+    }
+
 }

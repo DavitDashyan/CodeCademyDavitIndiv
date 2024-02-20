@@ -11,7 +11,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="759.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.logic.CourseDetailController">
+<AnchorPane prefHeight="759.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/19"
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.logic.CourseDetailController">
    <VBox layoutX="24.0" layoutY="14.0" prefHeight="334.0" prefWidth="288.0" spacing="5.0">
       <children>
          <Label style="-fx-font-size: 18px;" text="Course Details">
@@ -50,8 +51,10 @@
                      <Label text="Amount of students who finished this course: " />
                      <HBox prefHeight="66.0" prefWidth="255.0" spacing="5">
                         <children>
-                           <Label fx:id="lblStudentsCompleted" alignment="CENTER" prefHeight="17.0" prefWidth="54.0" textAlignment="JUSTIFY" />
-                           <Label fx:id="lblStudentsCompleted1" prefHeight="17.0" prefWidth="74.0" text="Student(s)" />
+                           <Label fx:id="lblStudentsCompleted" alignment="CENTER" prefHeight="17.0"
+                              prefWidth="54.0" textAlignment="JUSTIFY" />
+                           <Label fx:id="lblStudentsCompleted1" prefHeight="17.0" prefWidth="74.0"
+                              text="Student(s)" />
                         </children>
                      </HBox>
                   </children>
@@ -61,14 +64,32 @@
          <HBox prefHeight="187.0" prefWidth="255.0" spacing="5">
             <children>
                <Label prefHeight="17.0" prefWidth="68.0" text="Intro Text:" />
-               <Label fx:id="lblIntroductionText" alignment="TOP_LEFT" contentDisplay="TOP" prefHeight="163.0" prefWidth="213.0" wrapText="true">
+               <Label fx:id="lblIntroductionText" alignment="TOP_LEFT" contentDisplay="TOP"
+                  prefHeight="163.0" prefWidth="213.0" wrapText="true">
                   <font>
                      <Font size="11.0" />
-                  </font></Label>
+                  </font>
+               </Label>
             </children>
          </HBox>
       </children>
    </VBox>
+   <VBox prefHeight="200.0" prefWidth="262.0" spacing="5" layoutX="24.0" layoutY="270.0">
+      <children>
+         <Label style="-fx-font-size: 18px;" text="Statistics"></Label>
+         <Label text="Per geslacht – hoeveel studenten" />
+         <Label text="er staan ingeschreven" />
+         <Label fx:id="lblgenResgistStatistics" text="" />
+      </children>
+   </VBox>
+   <Button fx:id="btnShowGenderStatistics" mnemonicParsing="false" onAction="#showGenderStatistics"
+      prefHeight="27.0" prefWidth="140.0" text="Show Gender Statistics" layoutX="24.0"
+      layoutY="390.0">
+      <HBox.margin>
+         <Insets left="40.0" right="30.0" top="20.0" />
+      </HBox.margin>
+   </Button>
+
    <VBox layoutX="24.0" layoutY="449.0" prefHeight="249.0" prefWidth="288.0" spacing="5.0">
       <children>
          <Label style="-fx-font-size: 18px;" text="Module Details" />
@@ -110,7 +131,8 @@
          <HBox prefHeight="88.0" prefWidth="255.0" spacing="5">
             <children>
                <Label text="Description:" />
-               <Label fx:id="lblModuleDescription" alignment="TOP_LEFT" contentDisplay="TOP" prefHeight="82.0" prefWidth="218.0" wrapText="true">
+               <Label fx:id="lblModuleDescription" alignment="TOP_LEFT" contentDisplay="TOP"
+                  prefHeight="82.0" prefWidth="218.0" wrapText="true">
                   <font>
                      <Font size="11.0" />
                   </font>
@@ -121,7 +143,8 @@
    </VBox>
    <VBox layoutX="367.0" layoutY="14.0" prefHeight="126.0" prefWidth="399.0" spacing="5.0">
       <children>
-         <Label prefHeight="27.0" prefWidth="402.0" style="-fx-font-size: 18px;" text="Add or Remove Module" />
+         <Label prefHeight="27.0" prefWidth="402.0" style="-fx-font-size: 18px;"
+            text="Add or Remove Module" />
          <HBox spacing="5">
             <children>
                <Label prefHeight="17.0" prefWidth="85.0" text="ModuleNames">
@@ -138,12 +161,15 @@
          </HBox>
          <HBox spacing="5">
             <children>
-               <Button fx:id="btnAddModule" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="27.0" prefWidth="140.0" text="Add Module to Course">
+               <Button fx:id="btnAddModule" mnemonicParsing="false" onAction="#handleButtonAction"
+                  prefHeight="27.0" prefWidth="140.0" text="Add Module to Course">
                   <HBox.margin>
                      <Insets left="40.0" right="30.0" top="20.0" />
                   </HBox.margin>
                </Button>
-               <Button fx:id="btnDeleteModule" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="27.0" prefWidth="140.0" text="Delete Module">
+               <Button fx:id="btnDeleteModule" mnemonicParsing="false"
+                  onAction="#handleButtonAction" prefHeight="27.0" prefWidth="140.0"
+                  text="Delete Module">
                   <HBox.margin>
                      <Insets top="20.0" />
                   </HBox.margin>
@@ -156,11 +182,11 @@
       </padding>
    </VBox>
 
-                <TableView fx:id="tvModules" layoutX="316.0" layoutY="190.0" prefHeight="551.0" prefWidth="501.0">
-        <columns>
-            <TableColumn fx:id="colModuleName" prefWidth="200.0" text="Module Name" />
-            <TableColumn fx:id="colModuleDescription" prefWidth="300.0" text="Description" />
-        </columns>
-    </TableView>
+   <TableView fx:id="tvModules" layoutX="316.0" layoutY="190.0" prefHeight="551.0" prefWidth="501.0">
+      <columns>
+         <TableColumn fx:id="colModuleName" prefWidth="200.0" text="Module Name" />
+         <TableColumn fx:id="colModuleDescription" prefWidth="300.0" text="Description" />
+      </columns>
+   </TableView>
 
 </AnchorPane>
