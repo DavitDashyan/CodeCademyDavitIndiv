@@ -12,7 +12,7 @@ public class StatisticsDAO {
     public static ObservableList<String> getGenderStatistics() {
         ObservableList<String> genderStatistics = FXCollections.observableArrayList();
         Connection conn = SQLServerDatabase.getDatabase().getConnection();
-        
+
         try {
             String query = "WITH GenderCounts AS (" +
                     "    SELECT " +
@@ -39,7 +39,8 @@ public class StatisticsDAO {
                     "    gc.TotalRegistrations, " +
                     "    CASE " +
                     "        WHEN gc.TotalRegistrations > 0 THEN " +
-                    "            CONVERT(DECIMAL(5, 2), COALESCE(cc.TotalCertificates, 0) * 100.0 / gc.TotalRegistrations) " +
+                    "            CONVERT(DECIMAL(5, 2), COALESCE(cc.TotalCertificates, 0) * 100.0 / gc.TotalRegistrations) "
+                    +
                     "        ELSE 0 " +
                     "    END AS PercentageCertificates " +
                     "FROM " +
@@ -88,5 +89,42 @@ public class StatisticsDAO {
         }
 
         return topWebcasts;
+    }
+
+    public static ObservableList<String> getAgeStatistics() {
+        ObservableList<String> ageStatistics = FXCollections.observableArrayList();
+        Connection conn = SQLServerDatabase.getDatabase().getConnection();
+
+        try {
+            String query = "SELECT " +
+                    "    CASE " +
+                    "        WHEN YEAR(GETDATE()) - YEAR(p.Birthdate) BETWEEN 10 AND 19 THEN '10-19 years' " +
+                    "        WHEN YEAR(GETDATE()) - YEAR(p.Birthdate) BETWEEN 20 AND 29 THEN '20-29 years' " +
+                    "        ELSE 'Other age group' " +
+                    "    END AS AgeGroup, " +
+                    "    COUNT(DISTINCT p.EmailAddress) AS NumberOfParticipants " +
+                    "FROM " +
+                    "    Participant p " +
+                    "GROUP BY " +
+                    "    CASE " +
+                    "        WHEN YEAR(GETDATE()) - YEAR(p.Birthdate) BETWEEN 10 AND 19 THEN '10-19 years' " +
+                    "        WHEN YEAR(GETDATE()) - YEAR(p.Birthdate) BETWEEN 20 AND 29 THEN '20-29 years' " +
+                    "        ELSE 'Other age group' " +
+                    "    END";
+
+            PreparedStatement stm = conn.prepareStatement(query);
+            ResultSet rs = stm.executeQuery();
+
+            while (rs.next()) {
+                String ageStatisticsEntry = "Age Group: " + rs.getString("AgeGroup") +
+                        ", Number of Participants: " + rs.getInt("NumberOfParticipants");
+                ageStatistics.add(ageStatisticsEntry);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ageStatistics;
     }
 }

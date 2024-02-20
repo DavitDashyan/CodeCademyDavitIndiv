@@ -26,6 +26,9 @@ public class StatisticsController implements Initializable {
     @FXML
     private Button btnBack;
 
+    @FXML
+    private Label lblAgeStatistics;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Load and display Statistics 1
@@ -33,6 +36,14 @@ public class StatisticsController implements Initializable {
 
         // Load and display Statistics 5
         showTopWebcasts(null);
+
+        showStatistics(null);
+
+        // Load and display Statistics 5
+        showTopWebcasts(null);
+
+        // Load and display Age Statistics
+        showAgeStatistics(null);
     }
 
     @FXML
@@ -58,6 +69,17 @@ public class StatisticsController implements Initializable {
     }
 
     @FXML
+    void showAgeStatistics(ActionEvent event) {
+        ObservableList<String> ageStatistics = StatisticsDAO.getAgeStatistics();
+
+        if (!ageStatistics.isEmpty()) {
+            lblAgeStatistics.setText(String.join("\n", ageStatistics));
+        } else {
+            lblAgeStatistics.setText("No data available");
+        }
+    }
+
+    @FXML
     void backToHome(ActionEvent event) {
         try {
             Stage stage = (Stage) btnBack.getScene().getWindow();
@@ -69,7 +91,7 @@ public class StatisticsController implements Initializable {
             stage.show();
 
         } catch (IOException e) {
-            
+
             e.printStackTrace();
         }
     }
