@@ -111,32 +111,26 @@ public class ParticipantController implements Initializable {
     void handleButtonAction(ActionEvent event) throws IOException {
         if (event.getSource() == btnInsert) {
             if (validateInput()) {
-             insertParticipant();
+                insertParticipant();
             }
-        }
-        else if (event.getSource() == btnDelete) {
+        } else if (event.getSource() == btnDelete) {
             deleteParticipant();
-        } 
-        else if (event.getSource() == btnClear) {
+        } else if (event.getSource() == btnClear) {
             isClicked = true;
-            clear();    
-        } 
-        else if (event.getSource() == btnUpdate && isClicked) {
+            clear();
+        } else if (event.getSource() == btnUpdate && isClicked) {
             if (validateInput()) {
                 updateParticipant();
                 isClicked = false;
                 tfEmail.setDisable(false);
             }
-        }
-        else if (event.getSource() == btnUpdate && !isClicked) {
+        } else if (event.getSource() == btnUpdate && !isClicked) {
             isClicked = true;
             setText();
             tfEmail.setDisable(true);
-        }
-        else if(event.getSource() == btnBack) {
+        } else if (event.getSource() == btnBack) {
             backToHome();
-        }
-        else if (event.getSource() == btnDetails) {
+        } else if (event.getSource() == btnDetails) {
             toParticipantDetails();
         }
     }
@@ -149,10 +143,10 @@ public class ParticipantController implements Initializable {
         System.out.println("Show Participants method called");
 
         ObservableList<Participant> participantList = ParticipantDAO.getParticipants();
-        
+
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        
+
         tvParticipants.setItems(participantList);
     }
 
@@ -160,26 +154,24 @@ public class ParticipantController implements Initializable {
         System.out.println("Insert Participant method called");
 
         LocalDate birthdate = LocalDate.of(
-            Integer.parseInt(tfDateYear.getText()),
-            Integer.parseInt(tfDateMonth.getText()),
-            Integer.parseInt(tfDateDay.getText())
-        );
+                Integer.parseInt(tfDateYear.getText()),
+                Integer.parseInt(tfDateMonth.getText()),
+                Integer.parseInt(tfDateDay.getText()));
 
         ParticipantDAO.insertParticipant(
-            tfEmail.getText(),
-            tfName.getText(),
-            birthdate,
-            tfGender.getText(),
-            tfAddress.getText(),
-            tfPostalCode.getText(),
-            tfCity.getText(),
-            tfCountry.getText()
-        );
+                tfEmail.getText(),
+                tfName.getText(),
+                birthdate,
+                tfGender.getText(),
+                tfAddress.getText(),
+                tfPostalCode.getText(),
+                tfCity.getText(),
+                tfCountry.getText());
 
         clear();
         showParticipant();
     }
-    
+
     public void deleteParticipant() {
         System.out.println("Delete Participant method called");
 
@@ -221,11 +213,11 @@ public class ParticipantController implements Initializable {
         tfDateDay.setText(tvParticipants.getSelectionModel().getSelectedItem().getBirthdate());
 
         String[] dateParts = selectedParticipant.getBirthdate().split("-");
-            if (dateParts.length == 3) {
-                tfDateYear.setText(dateParts[0]);
-                tfDateMonth.setText(dateParts[1]);
-                tfDateDay.setText(dateParts[2]);
-            }
+        if (dateParts.length == 3) {
+            tfDateYear.setText(dateParts[0]);
+            tfDateMonth.setText(dateParts[1]);
+            tfDateDay.setText(dateParts[2]);
+        }
 
         tfGender.setText(tvParticipants.getSelectionModel().getSelectedItem().getGender());
         tfAddress.setText(tvParticipants.getSelectionModel().getSelectedItem().getAddress());
@@ -236,7 +228,7 @@ public class ParticipantController implements Initializable {
 
     public void clear() {
         System.out.println("Clear");
-        
+
         tfEmail.clear();
         tfName.clear();
         tfDateYear.clear();
@@ -249,7 +241,7 @@ public class ParticipantController implements Initializable {
         tfCountry.clear();
     }
 
-    public void backToHome() throws IOException{
+    public void backToHome() throws IOException {
         System.out.println("Back To Home");
 
         Stage stage = null;
@@ -257,26 +249,27 @@ public class ParticipantController implements Initializable {
 
         stage = (Stage) btnBack.getScene().getWindow();
         root = FXMLLoader.load(getClass().getResource("../presentation/GUI/LayoutGUI.fxml"));
-            
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void toParticipantDetails() throws IOException{
+    public void toParticipantDetails() throws IOException {
         System.out.println("To Participant Details");
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../presentation/DetailsParticipant/layoutDetailParticipant.fxml"));
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("../presentation/DetailsParticipant/layoutDetailParticipant.fxml"));
         Parent root = loader.load();
         DetailParticipantController detailController = loader.getController();
-    
+
         String selectedEmail = tvParticipants.getSelectionModel().getSelectedItem().getEmail();
         System.out.println(selectedEmail);
-    
+
         detailController.setParticipantEmail(selectedEmail);
 
         detailController.loadParticipantDetails();
-    
+
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
@@ -286,26 +279,34 @@ public class ParticipantController implements Initializable {
         // Check if email is right
         if (!InputValidation.isValidEmail(tfEmail.getText())) {
             InputValidation.showError("Invalid email format. \nPlease enter a valid email address.");
-                return false;
+            return false;
         }
 
         // Checking if postalcode is right NNNN<space>MM
         if (!InputValidation.isValidDutchPostalCode(tfPostalCode.getText())) {
-            InputValidation.showError("Invalid Dutch postal code. Please enter a valid postal code. \nIt needs to have 4 numbers, a space and two uppercase letters.");
-                return false;
+            InputValidation.showError(
+                    "Invalid Dutch postal code. Please enter a valid postal code. \nIt needs to have 4 numbers, a space and two uppercase letters.");
+            return false;
         }
 
         // Check if the date is correct
         int day = Integer.parseInt(tfDateDay.getText());
         int month = Integer.parseInt(tfDateMonth.getText());
         int year = Integer.parseInt(tfDateYear.getText());
-        
+
         if (!InputValidation.isValidDate(day, month, year)) {
             InputValidation.showError("Invalid date. \nPlease enter a valid date.");
-                return false;
+            return false;
+        }
+
+        // Check if the name is correctly formatted
+        if (!InputValidation.isValidNameFormat(tfName.getText())) {
+            InputValidation.showError(
+                    "Invalid name format. \nPlease enter a name with the first letter in uppercase followed by lowercase letters.");
+            return false;
         }
 
         return true;
     }
-   
+
 }

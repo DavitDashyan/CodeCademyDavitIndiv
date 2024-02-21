@@ -74,5 +74,10 @@ public class InputValidation {
         String postalCodeRegex = "^[1-9][0-9]{3}\\s[A-Z]{2}$";
         return postalCode.trim().matches(postalCodeRegex);
     }
+    
+    public static boolean isValidNameFormat(String name) {
+        // Check if the name starts with an uppercase letter, followed by lowercase letters
+        return name.matches("[A-Z][a-z]+");
+    }
 
 }
