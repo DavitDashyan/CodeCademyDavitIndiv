@@ -302,7 +302,7 @@ public class ParticipantController implements Initializable {
         // Check if the name is correctly formatted
         if (!InputValidation.isValidNameFormat(tfName.getText())) {
             InputValidation.showError(
-                    "Invalid name format. \nPlease enter a name with the first letter in uppercase followed by lowercase letters.");
+                    "Invalid name format. \nPlease enter a name with the first letter in uppercase \nfollowed by lowercase letters.");
             return false;
         }
 

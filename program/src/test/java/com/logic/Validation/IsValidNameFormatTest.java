@@ -3,11 +3,6 @@ package com.logic.Validation;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- * Test class for InputValidation.isValidNameFormat method.
- * This method tests if a given name is properly formatted with the first letter
- * in uppercase followed by lowercase letters.
- */
 public class IsValidNameFormatTest {
 
     /**

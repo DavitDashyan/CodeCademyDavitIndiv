@@ -84,7 +84,7 @@
    </VBox>
    <Button fx:id="btnShowGenderStatistics" mnemonicParsing="false" onAction="#showGenderStatistics"
       prefHeight="27.0" prefWidth="140.0" text="Show Gender Statistics" layoutX="24.0"
-      layoutY="390.0">
+      layoutY="399.0">
       <HBox.margin>
          <Insets left="40.0" right="30.0" top="20.0" />
       </HBox.margin>

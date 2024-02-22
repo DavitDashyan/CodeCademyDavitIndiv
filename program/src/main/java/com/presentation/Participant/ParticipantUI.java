@@ -17,8 +17,8 @@ public class ParticipantUI extends Application {
 
         stage.setScene(scene);
 
-        stage.setTitle("Emma van den Broek (2200567), Ivan van Dijk (2196154), Davit Dashyan (2206322)");
-
+        stage.setTitle("Davit Dashyan (2206322)");
+        
         stage.show();
     }
 }
